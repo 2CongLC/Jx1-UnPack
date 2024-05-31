@@ -29,19 +29,17 @@ Module Program
             Dim crc32 As UInt32 = br.ReadUInt32 ' Offset = 16, Length = 4
             Dim reserved As Byte() = br.ReadBytes(12) 'Offset = 20, Length = 12
 
-            br.BaseStream.Position = 32
-
             Console.WriteLine("sig : {0}", signature)
             Console.WriteLine("count : {0}", count)
             Console.WriteLine("index : {0}", index)
             Console.WriteLine("data : {0}", data)
             Console.WriteLine("crc32 : {0}", crc32)
 
-
-
+            br.Seek(index,SeekOrigin.Begin)  ' br.BaseStream.Position = index
             Dim subfiles As New List(Of FileData)()
             For i As Int32 = 0 To count - 1
                 subfiles.Add(New FileData)
+            br.BaseStream.Position += 16
             Next
 
             p = Path.GetDirectoryName(input) & "\" & Path.GetFileNameWithoutExtension(input)
@@ -72,8 +70,7 @@ Module Program
             offset = br.ReadUInt32
             size = br.ReadUInt32
             compressed = br.ReadBytes(3)
-            isCompress = br.ReadByte
-            ' br.BaseStream.Position += 16
+            isCompress = br.ReadByte  
         End Sub
     End Class
 
