@@ -75,8 +75,8 @@ Module Program
     End Class
 
 
-    Public Function Hash(ByVal fileName As String) As UInt64
-        Dim id As UInt64 = 0
+    Public Function Hash(ByVal fileName As String) As UInt32
+        Dim id As UInt32 = 0
         Dim index As Int32 = 0
         For Each c As Char In fileName
             If (AscW(c) >= AscW("A")) AndAlso (AscW(c) <= AscW("Z")) Then
