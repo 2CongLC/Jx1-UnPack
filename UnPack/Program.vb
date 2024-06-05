@@ -60,7 +60,7 @@ Module Program
     End Sub
 
     Class FileData
-        Public id As Int64 'Length = 4
+        Public id As Int32 'Length = 4
         Public offset As Int32 'Length = 4
         Public size As Int32 'Length = 4
         Public compressed As Byte() 'Length = 3
