@@ -1,0 +1,31 @@
+E:\MÃ NGUỒN LẬP TRÌNH\DỰ ÁN\PortScanner\bin\Debug\PortScanner.exe.config
+E:\MÃ NGUỒN LẬP TRÌNH\DỰ ÁN\PortScanner\bin\Debug\PortScanner.exe
+E:\MÃ NGUỒN LẬP TRÌNH\DỰ ÁN\PortScanner\bin\Debug\PortScanner.pdb
+E:\MÃ NGUỒN LẬP TRÌNH\DỰ ÁN\PortScanner\bin\Debug\PortScanner.xml
+E:\MÃ NGUỒN LẬP TRÌNH\DỰ ÁN\PortScanner\obj\Debug\PortScanner.vbproj.GenerateResource.cache
+E:\MÃ NGUỒN LẬP TRÌNH\DỰ ÁN\PortScanner\obj\Debug\PortScanner.exe
+E:\MÃ NGUỒN LẬP TRÌNH\DỰ ÁN\PortScanner\obj\Debug\PortScanner.xml
+E:\MÃ NGUỒN LẬP TRÌNH\DỰ ÁN\PortScanner\obj\Debug\PortScanner.pdb
+E:\MÃ NGUỒN LẬP TRÌNH\DỰ ÁN\PortScanner\obj\Debug\ChuCong.Resources.resources
+E:\MÃ NGUỒN LẬP TRÌNH\DỰ ÁN\PortScanner\obj\Debug\PortScanner.vbprojAssemblyReference.cache
+E:\MÃ NGUỒN LẬP TRÌNH\DỰ ÁN\SRC\PortScanner\bin\Debug\PortScanner.exe.config
+E:\MÃ NGUỒN LẬP TRÌNH\DỰ ÁN\SRC\PortScanner\bin\Debug\PortScanner.exe
+E:\MÃ NGUỒN LẬP TRÌNH\DỰ ÁN\SRC\PortScanner\bin\Debug\PortScanner.pdb
+E:\MÃ NGUỒN LẬP TRÌNH\DỰ ÁN\SRC\PortScanner\bin\Debug\PortScanner.xml
+E:\MÃ NGUỒN LẬP TRÌNH\DỰ ÁN\SRC\PortScanner\obj\Debug\ChuCong.Resources.resources
+E:\MÃ NGUỒN LẬP TRÌNH\DỰ ÁN\SRC\PortScanner\obj\Debug\PortScanner.vbproj.GenerateResource.cache
+E:\MÃ NGUỒN LẬP TRÌNH\DỰ ÁN\SRC\PortScanner\obj\Debug\PortScanner.exe
+E:\MÃ NGUỒN LẬP TRÌNH\DỰ ÁN\SRC\PortScanner\obj\Debug\PortScanner.xml
+E:\MÃ NGUỒN LẬP TRÌNH\DỰ ÁN\SRC\PortScanner\obj\Debug\PortScanner.pdb
+E:\MÃ NGUỒN LẬP TRÌNH\DỰ ÁN\SRC\PortScanner\obj\Debug\PortScanner.vbprojAssemblyReference.cache
+D:\Source VBNet_C#\GitHub\Port-Scanner\PortScanner\bin\Debug\PortScanner.exe.config
+D:\Source VBNet_C#\GitHub\Port-Scanner\PortScanner\bin\Debug\PortScanner.exe
+D:\Source VBNet_C#\GitHub\Port-Scanner\PortScanner\bin\Debug\PortScanner.pdb
+D:\Source VBNet_C#\GitHub\Port-Scanner\PortScanner\bin\Debug\PortScanner.xml
+D:\Source VBNet_C#\GitHub\Port-Scanner\PortScanner\obj\Debug\PortScanner.vbproj.AssemblyReference.cache
+D:\Source VBNet_C#\GitHub\Port-Scanner\PortScanner\obj\Debug\ChuCong.Resources.resources
+D:\Source VBNet_C#\GitHub\Port-Scanner\PortScanner\obj\Debug\PortScanner.vbproj.GenerateResource.cache
+D:\Source VBNet_C#\GitHub\Port-Scanner\PortScanner\obj\Debug\PortScanner.vbproj.CoreCompileInputs.cache
+D:\Source VBNet_C#\GitHub\Port-Scanner\PortScanner\obj\Debug\PortScanner.exe
+D:\Source VBNet_C#\GitHub\Port-Scanner\PortScanner\obj\Debug\PortScanner.xml
+D:\Source VBNet_C#\GitHub\Port-Scanner\PortScanner\obj\Debug\PortScanner.pdb
