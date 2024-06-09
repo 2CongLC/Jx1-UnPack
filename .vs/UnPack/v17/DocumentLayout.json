@@ -3,8 +3,14 @@
   "WorkspaceRootPath": "D:\\Source VBNet_C#\\GitHub\\Jx1-UnPack\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CD5D60F3-7E02-412D-8538-8117F72364BC}|UnPack\\UnPack.vbproj|d:\\source vbnet_c#\\github\\jx1-unpack\\unpack\\module1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|UnPack||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD5D60F3-7E02-412D-8538-8117F72364BC}|UnPack\\UnPack.vbproj|D:\\Source VBNet_C#\\GitHub\\Jx1-UnPack\\unpack\\module1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{CD5D60F3-7E02-412D-8538-8117F72364BC}|UnPack\\UnPack.vbproj|solutionrelative:unpack\\module1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD5D60F3-7E02-412D-8538-8117F72364BC}|UnPack\\UnPack.vbproj|d:\\source vbnet_c#\\github\\jx1-unpack\\unpack\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|8998e48e-b89a-4034-b66e-353d8c1fdc2e"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,12 +25,24 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "UnPack",
+              "DocumentMoniker": "D:\\Source VBNet_C#\\GitHub\\Jx1-UnPack\\UnPack\\UnPack.vbproj",
+              "RelativeDocumentMoniker": "UnPack\\UnPack.vbproj",
+              "ToolTip": "D:\\Source VBNet_C#\\GitHub\\Jx1-UnPack\\UnPack\\UnPack.vbproj",
+              "RelativeToolTip": "UnPack\\UnPack.vbproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-06-09T08:18:57.083Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Module1.vb",
               "DocumentMoniker": "D:\\Source VBNet_C#\\GitHub\\Jx1-UnPack\\UnPack\\Module1.vb",
               "RelativeDocumentMoniker": "UnPack\\Module1.vb",
               "ToolTip": "D:\\Source VBNet_C#\\GitHub\\Jx1-UnPack\\UnPack\\Module1.vb",
               "RelativeToolTip": "UnPack\\Module1.vb",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAeAAAA",
+              "ViewState": "AQIAACIAAAAAAAAAAAAgwD4AAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2024-06-09T02:23:52.663Z",
               "EditorCaption": ""

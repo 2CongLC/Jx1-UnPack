@@ -12,6 +12,8 @@ Module Program
 
     Public br As BinaryReader
     Public input As String
+
+    <Obsolete>
     Sub Main(args As String())
         If args.Count = 0 Then
             Console.WriteLine("Tool UnPack - 2CongLC.vn :: 2024")
@@ -45,12 +47,24 @@ Module Program
             Directory.CreateDirectory(p)
 
             For Each fd As FileData In subfiles
-                Console.WriteLine("File ID : {0} - File Offset : {1} - File Size : {2} - IsCompress : {3}", fd.id, fd.offset, fd.size, fd.isCompress)
+                Console.WriteLine("File ID : {0} - File Offset : {1} - File Size : {2} - UncompressSize {3} - IsCompress : {4}", fd.id, fd.offset, fd.size, fd.uncompressSize, fd.isCompress)
 
                 br.BaseStream.Position = fd.offset
 
-                Using bw As New BinaryWriter(File.Create(p & "//" & fd.id))
-                    bw.Write(br.ReadBytes(fd.size))
+                Dim buffer As Byte() = br.ReadBytes(fd.size)
+                Dim ext As String = GetExtension(buffer)
+                Dim temp As Byte() = Nothing
+
+                If ext = ".ucl" Then
+
+                    temp = Ucl.NRV2B_Decompress_8(buffer, fd.uncompressSize)
+
+                Else
+                    temp = buffer
+                End If
+
+                Using bw As New BinaryWriter(File.Create(p & "//" & fd.id & ext))
+                    bw.Write(temp)
                 End Using
             Next
 
@@ -63,13 +77,16 @@ Module Program
         Public id As Int32 'Length = 4
         Public offset As Int32 'Length = 4
         Public size As Int32 'Length = 4
-        Public compressed As Byte() 'Length = 3
+        Public uncompressSize As Int32 'Length = 3
         Public isCompress As Byte 'Length = 1     
         Public Sub New()
             id = br.ReadInt32
             offset = br.ReadInt32
             size = br.ReadInt32
-            compressed = br.ReadBytes(3)
+            Dim a As Byte = br.ReadByte
+            Dim b As Byte = br.ReadByte
+            Dim c As Byte = br.ReadByte
+            uncompressSize = a & b & c
             isCompress = br.ReadByte
         End Sub
     End Class

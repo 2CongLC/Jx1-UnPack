@@ -22,5 +22,40 @@ UnPack
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="M:UnPack.Extensions.IsRar(System.Byte[])">
+ <summary>
+ Kiểm tra định dạng WinRar
+ </summary>
+ <param name="data"></param>
+ <returns></returns>
+</member>
+<member name="M:UnPack.Extensions.IsZip(System.Byte[])">
+ <summary>
+ Kiểm tra định dạng Zip
+ </summary>
+ <param name="data"></param>
+ <returns></returns>
+</member>
+<member name="M:UnPack.Extensions.IsBZip2(System.Byte[])">
+ <summary>
+ Kiểm tra định dạng Bzip2
+ </summary>
+ <param name="data"></param>
+ <returns></returns>
+</member>
+<member name="M:UnPack.Extensions.IsLZip(System.Byte[])">
+ <summary>
+ Kiểm tra định dạng Lz
+ </summary>
+ <param name="data"></param>
+ <returns></returns>
+</member>
+<member name="M:UnPack.Extensions.IsXz(System.Byte[])">
+ <summary>
+ Kiểm tra định dạng Xz
+ </summary>
+ <param name="data"></param>
+ <returns></returns>
+</member>
 </members>
 </doc>
