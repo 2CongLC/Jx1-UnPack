@@ -64,7 +64,7 @@ Module Program
                 temp = buffer
                 'End If
 
-                Using bw As New BinaryWriter(File.Create(p & "//" & fd.id & ext))
+                Using bw As New BinaryWriter(File.Create(p & "//" & fd.id & "-" & fd.uncompressSize & ext))
                     bw.Write(temp)
                 End Using
             Next
@@ -78,7 +78,7 @@ Module Program
         Public id As Int32 'Length = 4
         Public offset As Int32 'Length = 4
         Public size As Int32 'Length = 4
-        Public uncompressSize As Int32 'Length = 3
+        Public uncompressSize As UInt32 'Length = 3
         Public isCompress As Byte 'Length = 1     
         Public Sub New()
             id = br.ReadInt32
