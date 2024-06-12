@@ -81,10 +81,10 @@ Module Program
             id = br.ReadInt32
             offset = br.ReadInt32
             size = br.ReadInt32
-            Dim a As Byte = br.ReadByte
-            Dim b As Byte = br.ReadByte
-            Dim c As Byte = br.ReadByte
-            uncompressSize = a & b & c
+            Dim a As Byte = br.ReadByte ' Value 0
+            Dim b As Byte = br.ReadByte ' Value 1
+            Dim c As Byte = br.ReadByte ' Value 2
+            uncompressSize = (c << 16) Or (b << 8) Or a
             isCompress = br.ReadByte
         End Sub
     End Class
