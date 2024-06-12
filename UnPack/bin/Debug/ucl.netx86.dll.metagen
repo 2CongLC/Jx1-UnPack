@@ -1,0 +1,31 @@
+ImageRuntimeVersion: v4.0.30319
+Assembly ucl.netx86, Version=0.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class UclCompression.Ucl: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    NRV2B_99_Compress(Byte[], Int32): PrivateScope, Public, Static, HideBySig
+    NRV2D_99_Compress(Byte[], Int32): PrivateScope, Public, Static, HideBySig
+    NRV2E_99_Compress(Byte[], Int32): PrivateScope, Public, Static, HideBySig
+    NRV2B_Decompress_8(Byte[], Int32): PrivateScope, Public, Static, HideBySig
+    NRV2B_Decompress_LE16(Byte[], Int32): PrivateScope, Public, Static, HideBySig
+    NRV2B_Decompress_LE32(Byte[], Int32): PrivateScope, Public, Static, HideBySig
+    NRV2B_Decompress_Safe8(Byte[], Int32): PrivateScope, Public, Static, HideBySig
+    NRV2B_Decompress_SafeLE16(Byte[], Int32): PrivateScope, Public, Static, HideBySig
+    NRV2B_Decompress_SafeLE32(Byte[], Int32): PrivateScope, Public, Static, HideBySig
+    NRV2D_Decompress_8(Byte[], Int32): PrivateScope, Public, Static, HideBySig
+    NRV2D_Decompress_LE16(Byte[], Int32): PrivateScope, Public, Static, HideBySig
+    NRV2D_Decompress_LE32(Byte[], Int32): PrivateScope, Public, Static, HideBySig
+    NRV2D_Decompress_Safe8(Byte[], Int32): PrivateScope, Public, Static, HideBySig
+    NRV2D_Decompress_SafeLE16(Byte[], Int32): PrivateScope, Public, Static, HideBySig
+    NRV2D_Decompress_SafeLE32(Byte[], Int32): PrivateScope, Public, Static, HideBySig
+    NRV2E_Decompress_8(Byte[], Int32): PrivateScope, Public, Static, HideBySig
+    NRV2E_Decompress_LE16(Byte[], Int32): PrivateScope, Public, Static, HideBySig
+    NRV2E_Decompress_LE32(Byte[], Int32): PrivateScope, Public, Static, HideBySig
+    NRV2E_Decompress_Safe8(Byte[], Int32): PrivateScope, Public, Static, HideBySig
+    NRV2E_Decompress_SafeLE16(Byte[], Int32): PrivateScope, Public, Static, HideBySig
+    NRV2E_Decompress_SafeLE32(Byte[], Int32): PrivateScope, Public, Static, HideBySig

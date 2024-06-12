@@ -55,16 +55,13 @@ Module Program
                 Dim ext As String = GetExtension(buffer)
                 Dim temp As Byte() = Nothing
 
-                ' If ext = ".ucl" Then
+                If fd.isCompress = 1 Then
+                    temp = Ucl.NRV2B_Decompress_8(buffer, fd.uncompressSize)
+                Else
+                    temp = buffer
+                End If
 
-
-                '  temp = Ucl.NRV2B_Decompress_8(buffer, fd.uncompressSize)
-
-                ' Else
-                temp = buffer
-                'End If
-
-                Using bw As New BinaryWriter(File.Create(p & "//" & fd.id & "-" & fd.uncompressSize & ext))
+                Using bw As New BinaryWriter(File.Create(p & "//" & fd.id & ext))
                     bw.Write(temp)
                 End Using
             Next
@@ -78,7 +75,7 @@ Module Program
         Public id As Int32 'Length = 4
         Public offset As Int32 'Length = 4
         Public size As Int32 'Length = 4
-        Public uncompressSize As UInt32 'Length = 3
+        Public uncompressSize As Int32 'Length = 3
         Public isCompress As Byte 'Length = 1     
         Public Sub New()
             id = br.ReadInt32
