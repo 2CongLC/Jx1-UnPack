@@ -49,26 +49,28 @@ Module Program
 
             For Each fd As FileData In subfiles
 
-                Console.WriteLine("File ID : {0} - File Offset : {1} - File Size : {2} -  IsCompress : {3}", fd.id, fd.offset, fd.size, fd.isCompressType)
-
+               
+                Dim unsize as Int32 = fd.compressSize(2) << 16 Or fd.compressSize(1) << 8 Or fd.compressSize(0)
+                Dim types as Int32 = fd.compressSize(4)
+        
+                Console.WriteLine("File ID : {0} - File Offset : {1} - File Size : {2} -  unCompressSize : {3} - iscompressType : {4}", fd.id, fd.offset, fd.size, unsize, types)
+        
                 br.BaseStream.Seek(fd.offset, SeekOrigin.Begin)
                 Dim buffer As Byte() = br.ReadBytes(fd.size)
+        
                 Dim temp As Byte() = Nothing
 
-                ' If fd.iscompressType = 1 Or fd.iscompressType = 32 Then
-                ' Console.WriteLine("UnCompress Size : {0}", fd.compressSize)
-                '  temp = Ucl.NRV2B_Decompress_8(buffer, fd.compressSize)
-                '  Else
-                temp = buffer
-                '  End If
-
+                 If fd.iscompressType = 1 Or fd.iscompressType = 32 Then
+                  temp = Ucl.NRV2B_Decompress_8(buffer, fd.compressSize)
+                  Else
+                  temp = buffer
+                  End If
 
                 Dim ext As String = GetExtension(buffer)
 
                 Using bw As New BinaryWriter(File.Create(p & "//" & fd.id & ext))
-                    bw.Write(buffer)
+                    bw.Write(temp)
                 End Using
-
 
             Next
 
@@ -81,19 +83,13 @@ Module Program
         Public id As Int32 'Length = 4
         Public offset As Int32 'Length = 4
         Public size As Int32 'Length = 4
-        Public compressSize As Int32 'Length = 3
-        Public iscompressType As Byte 'Length = 1
+        Public compressSize As Byte() 'Length = 3
 
         Public Sub New()
             id = br.ReadInt32
             offset = br.ReadInt32
             size = br.ReadInt32
-            Dim len As UInt32 = 0
-            len = len Or CUInt(br.ReadByte)
-            len = len Or CUInt(br.ReadByte) << 8
-            len = len Or CUInt(br.ReadByte) << 16
-            compressSize = len
-            iscompressType = br.ReadByte
+            compressSize = br.ReadBytes(4)
         End Sub
     End Class
 
