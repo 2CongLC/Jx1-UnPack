@@ -54,10 +54,10 @@ Module Program
 
                 Dim buffer As Byte() = br.ReadBytes(fd.size)
                 Dim ext As String = GetExtension(buffer)
-                Dim unsize As UInt32 = fd.uncompressSize(2) << 16 Or fd.uncompressSize(1) << 8 Or fd.uncompressSize(0)
+                Dim unsize As UInt32 = CUInt(buffer(2)) << 16 Or CUInt(buffer(1)) << 8 Or CUInt(buffer(0))
                 Dim temp As Byte() = Nothing
 
-                If fd.isCompress = 1 Then
+                If fd.isCompressType = 1 Or fd.isCompressType = 32 Then
                     temp = Ucl.NRV2B_Decompress_8(buffer, unsize)
                 Else
                     temp = buffer
@@ -77,14 +77,14 @@ Module Program
         Public id As Int32 'Length = 4
         Public offset As Int32 'Length = 4
         Public size As Int32 'Length = 4
-        Public uncompressSize As Byte() 'Length = 3
-        Public isCompress As Byte 'Length = 1     
+        Public unknow As Byte() 'Length = 3
+        Public isCompresType As Byte 'Length = 1     
         Public Sub New()
             id = br.ReadInt32
             offset = br.ReadInt32
             size = br.ReadInt32
-            uncompressSize = br.ReadBytes(3)
-            isCompress = br.ReadByte
+            unknow = br.ReadBytes(3)
+            isCompressType = br.ReadByte
         End Sub
     End Class
 
