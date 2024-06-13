@@ -3,6 +3,7 @@ Imports System
 Imports System.Collections
 Imports System.IO
 Imports System.IO.Compression
+Imports System.Linq.Expressions
 Imports System.Runtime
 Imports System.Text
 Imports System.Text.RegularExpressions
@@ -53,10 +54,11 @@ Module Program
 
                 Dim buffer As Byte() = br.ReadBytes(fd.size)
                 Dim ext As String = GetExtension(buffer)
+                Dim unsize As UInt32 = fd.uncompressSize(2) << 16 Or fd.uncompressSize(1) << 8 Or fd.uncompressSize(0)
                 Dim temp As Byte() = Nothing
 
                 If fd.isCompress = 1 Then
-                    temp = Ucl.NRV2B_Decompress_8(buffer, fd.uncompressSize)
+                    temp = Ucl.NRV2B_Decompress_8(buffer, unsize)
                 Else
                     temp = buffer
                 End If
@@ -75,16 +77,13 @@ Module Program
         Public id As Int32 'Length = 4
         Public offset As Int32 'Length = 4
         Public size As Int32 'Length = 4
-        Public uncompressSize As Int32 'Length = 3
+        Public uncompressSize As Byte() 'Length = 3
         Public isCompress As Byte 'Length = 1     
         Public Sub New()
             id = br.ReadInt32
             offset = br.ReadInt32
             size = br.ReadInt32
-            Dim a As Byte = br.ReadByte ' Value 0
-            Dim b As Byte = br.ReadByte ' Value 1
-            Dim c As Byte = br.ReadByte ' Value 2
-            uncompressSize = (c << 16) Or (b << 8) Or a
+            uncompressSize = br.ReadBytes(3)
             isCompress = br.ReadByte
         End Sub
     End Class
