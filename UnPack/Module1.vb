@@ -38,7 +38,7 @@ Module Program
             Console.WriteLine("data : {0}", data)
             Console.WriteLine("crc32 : {0}", crc32)
 
-            br.BaseStream.Seek(index, SeekOrigin.Begin) 'br.BaseStream.Position = index
+            br.BaseStream.Seek(index, SeekOrigin.Begin)
             Dim subfiles As New List(Of FileData)()
             For i As Int32 = 0 To count - 1
                 subfiles.Add(New FileData)
@@ -48,26 +48,28 @@ Module Program
             Directory.CreateDirectory(p)
 
             For Each fd As FileData In subfiles
-                Console.WriteLine("File ID : {0} - File Offset : {1} - File Size : {2} - UncompressSize {3} - IsCompress : {4}", fd.id, fd.offset, fd.size, fd.uncompressSize, fd.isCompress)
 
-                br.BaseStream.Position = fd.offset
+                Console.WriteLine("File ID : {0} - File Offset : {1} - File Size : {2} -  IsCompress : {3}", fd.id, fd.offset, fd.size, fd.isCompressType)
 
+                br.BaseStream.Seek(fd.offset, SeekOrigin.Begin)
                 Dim buffer As Byte() = br.ReadBytes(fd.size)
-                Dim unsize As UInt32 = CUInt(buffer(2)) << 16 Or CUInt(buffer(1)) << 8 Or CUInt(buffer(0))
                 Dim temp As Byte() = Nothing
 
-                If fd.isCompressType = 1 Or fd.isCompressType = 32 Then
-                    temp = Ucl.NRV2B_Decompress_8(buffer, unsize)
-                Else
-                    temp = buffer
-                End If
+                ' If fd.iscompressType = 1 Or fd.iscompressType = 32 Then
+                ' Console.WriteLine("UnCompress Size : {0}", fd.compressSize)
+                '  temp = Ucl.NRV2B_Decompress_8(buffer, fd.compressSize)
+                '  Else
+                temp = buffer
+                '  End If
 
 
-                Dim ext As String = GetExtension(temp)
+                Dim ext As String = GetExtension(buffer)
 
                 Using bw As New BinaryWriter(File.Create(p & "//" & fd.id & ext))
-                    bw.Write(temp)
+                    bw.Write(buffer)
                 End Using
+
+
             Next
 
             Console.WriteLine("unpack done!!!")
@@ -79,14 +81,19 @@ Module Program
         Public id As Int32 'Length = 4
         Public offset As Int32 'Length = 4
         Public size As Int32 'Length = 4
-        Public unknow As Byte() 'Length = 3
-        Public isCompresType As Byte 'Length = 1     
+        Public compressSize As Int32 'Length = 3
+        Public iscompressType As Byte 'Length = 1
+
         Public Sub New()
             id = br.ReadInt32
             offset = br.ReadInt32
             size = br.ReadInt32
-            unknow = br.ReadBytes(3)
-            isCompressType = br.ReadByte
+            Dim len As UInt32 = 0
+            len = len Or CUInt(br.ReadByte)
+            len = len Or CUInt(br.ReadByte) << 8
+            len = len Or CUInt(br.ReadByte) << 16
+            compressSize = len
+            iscompressType = br.ReadByte
         End Sub
     End Class
 
@@ -96,7 +103,7 @@ Module Program
         Dim index As Int32 = 0
         For Each c As Char In fileName
             If (AscW(c) >= AscW("A")) AndAlso (AscW(c) <= AscW("Z")) Then
-                id = (id + (++index) * (AscW(c) + AscW("a") - AscW("A"))) Mod &H8000000BUI * &HFFFFFFEF
+                id= (id + (++index) * (AscW(c) + AscW("a") - AscW("A"))) Mod &H8000000BUI * &HFFFFFFEF
             Else
                 id = (id + (++index) * AscW(c)) Mod &H8000000BUI * &HFFFFFFEF
             End If
