@@ -53,7 +53,6 @@ Module Program
                 br.BaseStream.Position = fd.offset
 
                 Dim buffer As Byte() = br.ReadBytes(fd.size)
-                Dim ext As String = GetExtension(buffer)
                 Dim unsize As UInt32 = CUInt(buffer(2)) << 16 Or CUInt(buffer(1)) << 8 Or CUInt(buffer(0))
                 Dim temp As Byte() = Nothing
 
@@ -62,6 +61,9 @@ Module Program
                 Else
                     temp = buffer
                 End If
+
+
+                Dim ext As String = GetExtension(temp)
 
                 Using bw As New BinaryWriter(File.Create(p & "//" & fd.id & ext))
                     bw.Write(temp)
