@@ -49,7 +49,8 @@ Module Program
 
             For Each fd As FileData In subfiles
 
-               
+
+
                 Dim unsize as Int32 = fd.compressSize(2) << 16 Or fd.compressSize(1) << 8 Or fd.compressSize(0)
                 Dim types as Int32 = fd.compressSize(4)
         
@@ -60,10 +61,10 @@ Module Program
         
                 Dim temp As Byte() = Nothing
 
-                 If fd.iscompressType = 1 Or fd.iscompressType = 32 Then
-                  temp = Ucl.NRV2B_Decompress_8(buffer, fd.compressSize)
-                  Else
-                  temp = buffer
+                If types = 1 Or types = 32 Then
+                    temp = Ucl.NRV2B_Decompress_8(buffer, unsize)
+                Else
+                    temp = buffer
                   End If
 
                 Dim ext As String = GetExtension(buffer)
