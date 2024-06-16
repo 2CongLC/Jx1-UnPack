@@ -51,17 +51,19 @@ Module Program
 
 
 
-                Dim unsize as Int32 = fd.compressSize(2) << 16 Or fd.compressSize(1) << 8 Or fd.compressSize(0)
-                Dim types as Int32 = fd.compressSize(4)
-        
+                Dim unsize As Int32 = GetSize(fd.compressSize)
+                Dim types As Int32 = fd.compressSize(3)
+
                 Console.WriteLine("File ID : {0} - File Offset : {1} - File Size : {2} -  unCompressSize : {3} - iscompressType : {4}", fd.id, fd.offset, fd.size, unsize, types)
         
                 br.BaseStream.Seek(fd.offset, SeekOrigin.Begin)
                 Dim buffer As Byte() = br.ReadBytes(fd.size)
-        
+
+
+
                 Dim temp As Byte() = Nothing
 
-                If types = 1 Or types = 32 Then
+                If types = 0 Or types = 0 Then '1 - 32
                     temp = Ucl.NRV2B_Decompress_8(buffer, unsize)
                 Else
                     temp = buffer
@@ -74,7 +76,7 @@ Module Program
                 End Using
 
             Next
-
+            br.Close()
             Console.WriteLine("unpack done!!!")
         End If
         Console.ReadLine()
@@ -93,6 +95,11 @@ Module Program
             compressSize = br.ReadBytes(4)
         End Sub
     End Class
+
+
+    Public Function GetSize(ByVal buffer As Byte()) As Int32
+        Return CInt(buffer(2)) << 16 Or CInt(buffer(1)) << 8 Or CInt(buffer(0))
+    End Function
 
 
     Public Function Hash(ByVal fileName As String) As UInt32
